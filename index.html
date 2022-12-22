@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>时光相册</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="keywords" content="时光相册">
+    <meta name="description" content="记录美好时光">
+    <link rel="stylesheet" type="text/css" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/noscript.css">
+    <noscript>
+        <link rel="stylesheet" href="https://time.6hi.cn/usr/themes/time/assets/css/noscript.css" />
+    </noscript>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1635479_m8o2ir6mitf.css">
+    <script src="https://at.alicdn.com/t/font_1635479_m8o2ir6mitf.js"></script>
+</head>
+
+<body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Header -->
+        <header id="header">
+            <h1><a href=" "><strong>时光相册</strong> </a> </h1>
+            <nav>
+                <ul>
+                    <li><a type="button" id="fullscreen" class="btn btn-default visible-lg visible-md" alt="切换全屏"><svg class="icon-zmki zmki_dh zmki_wap" aria-hidden="true">
+                                <use xlink:href="https://time.6hi.cn/#icon-zmki-ziyuan-copy"></use>
+                            </svg></a></li>
+                    <li><a href="#footer" class="icon solid fa-info-circle">关于</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- Main -->
+        <div id="main">
+
+            <article class="thumb img-area">
+                <a class="image my-photo" alt="loading" href="photo/133.webp">
+                    <img class="zmki_px  my-photo" onerror="this.src='https://time.6hi.cn/usr/themes/time/assets/img/20200212-fcf30f3d33625.gif';this.onerror=null" data-src="img/133.webp">
+                </a>
+                <h2>我在项城很想你</h2>
+                <p></p>
+            </article>
+            
+            
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer" class="panel">
+            <div class="inner split">
+                <div class="inner split">
+                    <div>
+                        <section>
+                            <h2>关于wall</h2>
+                            <p>岁月不居，时节如流. <br> 温馨提示：由于手机端窗口过小。使用PC端浏览才会显示图片介绍</p>
+                        </section>
+                        <section>
+                            <h2>联系我</h2>
+                            <ul class="icons">
+                                <li><a href="  " target="_blank" class="icon brands fa-telegram"><span class="label">HOOME</span></a></li>
+                                <li><a href="" target="_blank" class="icon brands fa-qq"><span class="label">QQ</span></a></li>
+                                <li><a href="" target="_blank" class="icon brands fa-weibo"><span class="label">weibo</span></a></li>
+                                <li><a href="http://github.com/ciluoan/" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                            </ul>
+                        </section>
+                        <span style="color: #b5b5b5; font-size: 0.8em;">
+
+                            <p class="copyright">©<a href=" " target="_blank">cici</a>
+                                </p>
+                                <a href="http://beian.miit.gov.cn/" target="_blank">
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+            <script type="text/javascript">
+                function isInSight(el) {
+                    const bound = el.getBoundingClientRect();
+                    const clientHeight = window.innerHeight;
+                    //如果只考虑向下滚动加载
+                    //const clientWidth=window.innerWeight;
+                    return bound.top <= clientHeight + 100;
+                }
+
+                let index = 0;
+
+                function checkImgs() {
+                    const imgs = document.querySelectorAll('.my-photo');
+                    for (let i = index; i < imgs.length; i++) {
+                        if (isInSight(imgs[i])) {
+                            loadImg(imgs[i]);
+                            index = i;
+                        }
+                    }
+                    // Array.from(imgs).forEach(el => {
+                    //   if (isInSight(el)) {
+                    //     loadImg(el);
+                    //   }
+                    // })
+                }
+
+                function loadImg(el) {
+                    if (!el.src) {
+                        const source = el.dataset.src;
+                        el.src = source;
+                    }
+                }
+
+                function throttle(fn, mustRun = 10) {
+                    const timer = null;
+                    let previous = null;
+                    return function() {
+                        const now = new Date();
+                        const context = this;
+                        const args = arguments;
+                        if (!previous) {
+                            previous = now;
+                        }
+                        const remaining = now - previous;
+                        if (mustRun && remaining >= mustRun) {
+                            fn.apply(context, args);
+                            previous = now;
+                        }
+                    }
+                }
+            </script>
+            <script>
+                window.onload = checkImgs;
+                window.onscroll = throttle(checkImgs);
+            </script>
+    </div>
+        <!-- Scripts -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.poptrox.min.js"></script>
+        <script src="https://time.6hi.cn/usr/themes/time/assets/js/browser.min.js"></script>
+        <script src="js/breakpoints.min.js"></script>
+        <script src="js/util.js"></script>
+        <script src="js/main.js"></script>
+    
+</body>
+
+</html>
